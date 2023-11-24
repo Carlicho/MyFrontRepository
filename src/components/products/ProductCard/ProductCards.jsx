@@ -5,17 +5,26 @@ import styled from 'styled-components'
 
 
 const ProductCards = () => {
+  const {Product} = props
+
 
     const ProductCardsContainer = styled.div`
 
         `;
 
   return (
+
+
+
+    
     <ProductCardsContainer>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
+
+    {Product.map((product)=>{
+      ProductCard.name
+      ProductCard.image
+      ProductCard.price
+    })
+
     </ProductCardsContainer>
   )
 }

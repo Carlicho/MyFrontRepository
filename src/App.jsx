@@ -7,20 +7,23 @@ import Products from './components/products/products'
 import Help from './components/Help/Help'
 import Index from './components/Views/Index/Index'
 import Footer from './components/Footer/Footer'
-import ProductCategories from './components/products/ProductCategories/ProductCategories'
+
 import ProductDetail from './components/products/ProductDetailCard/ProductDetail'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
+
+  // const {loginWithRedirect} =  useAuth0()
   
+  // <button onClick={()=>loginWithRedirect}>login</button>
 
   return (
     <div className='app'>
 
 
-    
 
     <Header/>
-    <ProductCategories />
+    
       
     
     <Routes>

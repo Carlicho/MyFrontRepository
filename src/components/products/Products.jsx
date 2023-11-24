@@ -1,8 +1,7 @@
 import React from 'react'
 
 
-import styled from 'styled-components'
-
+import ProductCategories from './ProductCategories/ProductCategories'
 import ProductCards from './ProductCard/ProductCards'
 
 
@@ -13,6 +12,8 @@ const Products = () => {
 
   return (
     <div>
+
+      <ProductCategories />
    
       <ProductCards/> 
       </div>
