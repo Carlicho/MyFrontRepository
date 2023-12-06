@@ -1,27 +1,35 @@
+import { useState } from 'react';
+import styles from './Searchbar.module.css';
 
-import styles from './Searchbar.module.css'
-import { HiOutlineSearch } from "react-icons/hi";
-import { TiShoppingCart } from "react-icons/ti";
+const SearchBar = ({ filtrar }) => {
+  const [productos, setProductos] = useState('');
 
-import styled from 'styled-components'
+  const inputChange = (e) => {
+    const value = e.target.value;
+    setProductos(value);
 
-const SearchBar = () => {
+    // Uncomment the line below if you want to use the filtrar prop
+    // filtrar(value);
+  };
 
-  const Sh1 = styled.h1`
-    font-size: 40px;
-    letter-spacing: 12px;
-    text-shadow: 2px 2px 2px blue;
-    text-shadow: -2px -2px -2px orange;
-  `;
+  const onSearch = () => {
+    // Perform any actions you need when the search button is clicked
+    console.log('Search clicked with value:', productos);
+  };
 
   return (
-    <div >
-        <div className={styles.inputBox}>
-          <div className={styles.searchInput}></div>
-        </div>
+    <div>
+      <div className={styles.inputBox}>
+        <input
+          placeholder="Buscador"
+          className={styles.searchInput}
+          value={productos}
+          onChange={inputChange}
+        />
+        <button onClick={onSearch}>Buscar</button>
+      </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default SearchBar
+export default SearchBar;

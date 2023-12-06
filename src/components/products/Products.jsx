@@ -1,22 +1,34 @@
 import React from 'react'
 
 
-import ProductCategories from './ProductCategories/ProductCategories'
+import styled from 'styled-components'
+
 import ProductCards from './ProductCard/ProductCards'
+import ProductCategories from './ProductCategories/ProductCategories'
+import ProductFilterPrice from '../../components/products/ProductFilterPrice/ProductFilterPrice'
+import ProductContainer from './ProductContainer'
 
 
 
-
-const Products = () => {
-
+const Products = ({productos}) => {
+  const ContainerFilterCat = styled.div`
+  display: flex;
+  flex-direction: column;
+  `
+  const GeneralContainerProd = styled.div`
+  display: flex;
+  `
 
   return (
-    <div>
+    <GeneralContainerProd>
 
-      <ProductCategories />
-   
-      <ProductCards/> 
-      </div>
+      <ContainerFilterCat>
+        <ProductCategories/>
+        <ProductFilterPrice />
+      </ContainerFilterCat>
+  
+      <ProductCards productos={productos} /> 
+    </GeneralContainerProd>
   )
 }
 
