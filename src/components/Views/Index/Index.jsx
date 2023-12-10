@@ -10,8 +10,8 @@ import Sliders from './Slider.jsx/Sliders';
 const Index = () => {
 
   const ImgContainer = styled.div`
-    width: 1200px;
-    height: 1200px;
+    width: 900px;
+    height: 900px;
     margin: 0 auto;
   `
     
