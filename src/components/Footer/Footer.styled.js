@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 export const ContainerGeneralFooter = styled.div`
     border: 2px solid black;
-    background-color: #fd611a;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(351deg, rgba(253, 253, 253, 0.762) 6%, rgba(228, 228, 228, 0.651) 42%, rgb(209, 209, 209) 98%);
+    box-shadow:  1px 1px 4px #707070,
+             -1px -1px 3px #2a2a2a;
     height: 20vh;
+    
 `
 
 export const ContainerFlex = styled.div`
@@ -12,6 +16,7 @@ export const ContainerFlex = styled.div`
     width: 100%;
     height: 100%;
     text-align: center;
+    color: #000;
 `
 export const ContainerWrapperContent = styled.div`
     width: 25%;
@@ -33,14 +38,18 @@ export const WrapperContent = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: white;
+    color: #000;
+    font-size:1.2rem;
+    letter-spacing: 1px;
 `
 
 export const ButtonFooter = styled.button`
     border: 1px solid white;
     width: 100%;
     border-radius: 3px;
-    color: white;
+    color: #000;
+    font-size:1rem;
+    letter-spacing: 1px;
     background-color: #fd611a;
     margin-bottom: 5%;
     cursor: pointer;

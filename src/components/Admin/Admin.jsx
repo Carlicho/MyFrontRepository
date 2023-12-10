@@ -1,10 +1,53 @@
-import React from 'react'
-
 import styled from 'styled-components'
+import UpLoadWidget from '../Claudinary/upLoadWidget'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const Admin = () => {
 
+
+//prueba
+const [showForm, setShowForm] = useState(false);
+const url = 'http://localhost:3001/productos';
+const [productos, setProductos] = useState([]);
+const [id,setId]= useState('');
+const [nombre,setName]= useState('');
+const [descripcion,setDescripcion]= useState('');
+const [precio,setPrecio]= useState('');
+const [operation, setOperation]= useState('');
+const [tittle,setTittle]= useState('');
+
+const toggleForm = () => {
+  setShowForm(!showForm);
+};
+
+const handleGuardarProducto = () => {
+  // Lógica para guardar el producto
+  // ...
+
+  // Después de guardar el producto, oculta el formulario
+  setShowForm(false);
+};
+
+
+useEffect(()=>{
+  getProductos()
+},[]);
+
+const getProductos = async () => {
+  await axios('http://localhost:3001/productos').then(res=>{
+    setProductos(res.data)
+    console.log(res.data, '->data admin');
+  }).catch(error =>{
+    console.log(error);
+  })
+}
+//fin prueba
+
+
+
+  
 const AdminContainer = styled.div`
    
     
@@ -19,6 +62,9 @@ const SectionTittle = styled.div`
 
 const Adminh2 = styled.h2`
     font-size: 48px;
+    text-shadow: 2px 2px 2px  #fff,
+     -2px -2px 2px  #fff
+     
     
 `
 
@@ -35,6 +81,7 @@ const TableContainer = styled.table`
     width: 100%; /* Set the width of the table */
   border-collapse: collapse; /* Collapse borders for a cleaner look */
   margin-top: 20px; /* Adjust margin as needed */
+  
     
     
 `
@@ -46,6 +93,7 @@ const Tableth = styled.th`
   padding: 8px; /* Add padding to cells */
   text-align: left; /* Align text within cells */
   margin-left: 20px;
+  background-color: #f2f1f1;
 `
 
 const Tabletr = styled.tr`
@@ -57,24 +105,20 @@ const Tabletr = styled.tr`
     font-size: 1.2rem;
     margin: 0 0 0 5px ;
     padding:10px ;
+    
 `
 
 
 
-const TuConsultadiv = styled.div`
-    height: 256px;
-    border: .125rem solid pink;
-    background-color: #f0f0f085;
-    margin: 20px 0px;
-`
+
 
 
 const TableTd = styled.td`
 display: flex;
-width: 18.3125rem;
-height: 2.55rem;
+width: 28.3125rem;
+height: 5.55rem;
 margin-left: 1.25rem;
-
+background-color: #f2f1f1;
 font-weight: bold;
 border: 1px solid #ddd; /* Add borders to cells */
   padding: 8px; /* Add padding to cells */
@@ -132,43 +176,53 @@ color: #fff;
 font-weight: bold;
 `
 
-  return (
-    <AdminContainer>
+return (
+  <AdminContainer>
+    <SectionTittle>
+      <Adminh2>Admin</Adminh2>
+    </SectionTittle>
 
-<SectionTittle>
-        <Adminh2>Admin</Adminh2>
-        </SectionTittle>
+    <button className='agregarproductobtn' onClick={toggleForm} >Agregar Producto</button>
 
-        <TableContainer>
-            <thead>
-            <Tabletr>
-                <Tableth>ID</Tableth>
-                <Tableth>PRODUCTOS</Tableth>
-                <Tableth>ACCIONES</Tableth>
-            </Tabletr>
-            </thead>
-            <tbody>
-            <Tabletr>
-            <TableTd>1</TableTd>
-            <TableTd>Monitores</TableTd>
+    {showForm && (
+        <div className='agregarProductoformulario'>
+          <input type='text' value={nombre} onChange={(e) => setName(e.target.value)} placeholder='nombre' />
+          <input type='text' value={descripcion} onChange={(e) => setName(e.target.value)} placeholder='descripcion' />
+          <input type='text' value={precio} onChange={(e) => setPrecio(e.target.value)} placeholder='precio' />
+          
+          {/* Otros campos del formulario */}
+          <button onClick={handleGuardarProducto}>Guardar Producto</button>
+        </div>
+      )}
+
+    <TableContainer>
+      <thead>
+        <Tabletr>
+          
+          <Tableth>PRODUCTOS</Tableth>
+          <Tableth>ACCIONES</Tableth>
+        </Tabletr>
+      </thead>
+      <tbody>
+        {productos.map((producto) => (
+          <Tabletr key={producto.id_producto}>
+          <TableTd>{producto.nombre}</TableTd>
+            <TableTd>{producto.descripcion}</TableTd>
+
             <TableButtons>
-            <BtnAgregar>Agregar</BtnAgregar>
-            <BtnEditar>Editar</BtnEditar>
-            <BtnEliminar>Eliminar</BtnEliminar>
+              <UpLoadWidget />
+              <BtnAgregar>Agregar</BtnAgregar>
+              <BtnEditar>Editar</BtnEditar>
+              <BtnEliminar>Eliminar</BtnEliminar>
             </TableButtons>
-            </Tabletr>
-            </tbody>
-        </TableContainer>
+          </Tabletr>
+        ))}
+      </tbody>
+    </TableContainer>
 
+    <AnswersContainer></AnswersContainer>
+  </AdminContainer>
+);
+};
 
-
-        <AnswersContainer>
-
-        </AnswersContainer>
-        
- 
-    </AdminContainer>
-  )
-}
-
-export default Admin
+export default Admin;

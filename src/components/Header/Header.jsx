@@ -12,8 +12,9 @@ const Header = ({ setResults }) => {
   const Sh1 = styled.h1`
     font-size: 40px;
     letter-spacing: 12px;
-    text-shadow: 2px 2px 2px blue;
-    text-shadow: -2px -2px -2px orange;
+    text-shadow: 2px 2px 2px #000;
+    text-shadow: -2px -2px -2px #000;
+    color: #0954f4;
   `;
 
   return (

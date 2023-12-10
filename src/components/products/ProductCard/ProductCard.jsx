@@ -2,14 +2,24 @@ import React from 'react'
 import styled from 'styled-components'
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const ProductCard = ({key, id, name, status, image, precio, descripcion, nombre}) => {
     const CardContainer = styled.div`
-
+    background-color: #ffff;
+    border-right: 2px solid #000000;
+    border-top: 2px solid #000000;
+    border-bottom:  1px solid#000000;
+    border-radius: 0px 31px 0px 0px;
+    box-shadow: -2px 2px 2px -2px rgba(0,0,0,0.75) inset;
+    -webkit-box-shadow: -3px 3px 3px -3px rgba(0,0,0,0.75) inset;
+    -moz-box-shadow: -2px 1px 2px -1px rgba(0,0,0,0.75) inset;
     display: flex;
     justify-content: end;
-    margin: 10px 2px 8px 8px;
+    margin: 20px 2px 20px 8px;
+    max-width: 1000px;
   `;
+
 
 const CardImg = styled.img`
 width: 12rem;
@@ -50,7 +60,8 @@ const Productshopcart = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
-background-color: #fd611a;
+background-color: #2165f7;
+color: #ffff;
 cursor: pointer;
 width: 18.3125rem;
 height: 2.25rem;
@@ -63,7 +74,29 @@ const ProductshopcartDescription = styled.span`
 `
 
 
-// console.log(productos, ' -> productos');
+//Function MercadoPago
+
+const Mercadopago = () => {
+    const url = 'http://localhost:3001/pagos';
+const data = {
+  id: id,
+  nombre: nombre,
+  precio:  precio,
+  cantidad: 1
+};
+
+axios.post(url, data)
+  .then(response => {
+    const paymentLink = response.data.paymentLink;
+    console.log('Respuesta del servidor:', response.data);
+
+    setTimeout(() => {
+        window.open(response.data, '_blank');
+      }, 150);
+  })
+  .catch(error => {
+    console.log(error);});
+}
 
 
 
@@ -94,8 +127,8 @@ const ProductshopcartDescription = styled.span`
                 }
                 </ProductPrice>
                 <ProductshopcartContaier>
-                <Productshopcart>
-                    SUMAR AL CARRITO
+                <Productshopcart onClick={Mercadopago}>
+                    Comprar
                 </Productshopcart>
                 <TiShoppingCart size="3.24rem" />
                 </ProductshopcartContaier>

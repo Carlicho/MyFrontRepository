@@ -6,7 +6,13 @@ const ProductCards = ({ productos }) => {
   const [sortedProducts, setSortedProducts] = useState([...productos]);
   const [sortOrder, setSortOrder] = useState(null);
 
-  const ProductCardsContainer = styled.div``;
+  const ProductCardsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  `;
 
   const handleSort = (order) => {
     let sortedArray = [];

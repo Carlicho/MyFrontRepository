@@ -47,7 +47,7 @@ return (
             value={input}
             onChange={(e)=>{ SearchHandleChange(e.target.value)}}
           />
-          <button onClick={()=>{
+          <button className={styles.inputbtn} onClick={()=>{
                         navigate("/searchresults")
                     }}>Buscar</button>
         </div>

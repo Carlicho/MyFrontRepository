@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import PathRoutes from './helpers/PathRoutes.Helpers.Js'
 import { Route, Routes } from 'react-router-dom'
 import About from './components/Views/About/About'
@@ -8,6 +8,7 @@ import Admin from './components/Admin/Admin'
 import Index from './components/Views/Index/Index'
 import Footer from './components/Footer/Footer'
 import axios from 'axios';
+import UpLoadWidget from './components/Claudinary/upLoadWidget'
 
 import ProductDetail from './components/products/ProductDetailCard/ProductDetail'
 import UserSettings from './components/UserLogued/UserSettings'
@@ -17,13 +18,26 @@ import Notebooks from './components/products/ProductCategories/Notebooks/Noteboo
 import Monitores from './components/products/ProductCategories/Monitores/Monitores'
 import SearchResults from './components/Header/SearchBar/SearchResults'
 import SearchResultsList from './components/Header/SearchBar/SearchResultsList'
+import { CloudinaryContext } from 'cloudinary-react';
+import { createContext } from 'react';
+import { ThemeProvider } from 'styled-components';
+import ReactSwitch from 'react-switch';
+
+export const ThemeContext = createContext(null);
+
 
 
 
 
 
 function App() {
-
+  
+  
+  const [theme, setTheme] = useState("light")
+  
+  const toggleTheme = ()=>{
+    setTheme((curr)=>(curr==="light" ? "dark" : "light"))
+  }
 
  
   const [allProducts, setAllProducts] = useState([])
@@ -126,13 +140,16 @@ const filtrar = (terminoBusqueda) => {
   }
 
   return (
-    <div className='app'>
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div className='app' id={theme}>
 
 
-
-  <Header setResults={setResults} filtrar={filtrar} />
+  <Header setResults={setResults} filtrar={filtrar}  />
     
-     
+    <div className='switch'>
+    <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
+    </div>
+  
     <Routes>
       <Route path={PathRoutes.LANDING} element={<Index/>}/>
       <Route path={PathRoutes.INDEX} element={<Index/>}/>
@@ -149,6 +166,8 @@ const filtrar = (terminoBusqueda) => {
 
     <SearchResultsList result={results}/>
     </div>
+
+    </ThemeContext.Provider>
   )
 }
 
