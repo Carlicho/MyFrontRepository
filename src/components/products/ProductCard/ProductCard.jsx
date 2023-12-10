@@ -71,15 +71,17 @@ const ProductshopcartDescription = styled.span`
   return (
     <div>
         <CardContainer>
-            <Link to="/productDetail">
+            <Link to={`/productdetail/${id}`}>
             <CardImg  src={`${image}`}></CardImg>
             </Link>
             <Cardbody>
+            <Link to={`/productdetail/${id}`}>
                 <h2>
                     {
                         nombre
                     }
                 </h2>
+                </Link >
                 <ProductDescription>
                     {
                         descripcion

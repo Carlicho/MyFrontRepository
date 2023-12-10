@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import About from './components/Views/About/About'
 import Header from './components/Header/Header'
 import Products from './components/products/products'
-import Help from './components/Help/Help'
+import Admin from './components/Admin/Admin'
 import Index from './components/Views/Index/Index'
 import Footer from './components/Footer/Footer'
 import axios from 'axios';
@@ -24,7 +24,7 @@ import SearchResultsList from './components/Header/SearchBar/SearchResultsList'
 
 function App() {
 
- 
+
  
   const [allProducts, setAllProducts] = useState([])
   const [allMonitores, setAllMonitores] = useState([])
@@ -138,7 +138,7 @@ const filtrar = (terminoBusqueda) => {
       <Route path={PathRoutes.INDEX} element={<Index/>}/>
       <Route path={PathRoutes.PRODUCTOS} element={<Products productos={allProducts}/>} />
       <Route path={PathRoutes.DETAIL} element={<ProductDetail/>}/>
-      <Route path={PathRoutes.AYUDA} element={<Help/>}/>
+      <Route path={PathRoutes.ADMIN} element={<Admin/>}/>
       <Route path={PathRoutes.ABOUT} element={<About/>}/>
       <Route path={PathRoutes.MONITORES} element={<Monitores productos={allMonitores}/>}/>
       <Route path={PathRoutes.NOTEBOOKS} element={<Notebooks productos={allNotebooks}/>}/>
