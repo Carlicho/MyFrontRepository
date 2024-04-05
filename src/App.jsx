@@ -1,33 +1,23 @@
+import { useEffect,useState } from 'react';
+import PathRoutes from './helpers/PathRoutes.Helpers.Js';
+import { Route, Routes } from 'react-router-dom';
+import About from './components/Views/About/About';
+import Header from './components/Header/Header';
+import Products from './components/products/Products';
+import Index from './components/Views/Index/Index';
+import Footer from './components/Footer/Footer';
 import './App.css';
-import PathRoutes from './helpers/PathRoutes.Helpers.Js'
-import { Route, Routes } from 'react-router-dom'
-import About from './components/Views/About/About'
-import Header from './components/Header/Header'
-import Products from './components/products/products'
 import Admin from './components/Admin/Admin'
-import Index from './components/Views/Index/Index'
-import Footer from './components/Footer/Footer'
 import axios from 'axios';
-import UpLoadWidget from './components/Claudinary/upLoadWidget'
-
 import ProductDetail from './components/products/ProductDetailCard/ProductDetail'
-import UserSettings from './components/UserLogued/UserSettings'
-import { useEffect, useState } from 'react'
 import Perfiericos from './components/products/ProductCategories/Perifericos/Perfiericos'
 import Notebooks from './components/products/ProductCategories/Notebooks/Notebooks'
 import Monitores from './components/products/ProductCategories/Monitores/Monitores'
 import SearchResults from './components/Header/SearchBar/SearchResults'
 import SearchResultsList from './components/Header/SearchBar/SearchResultsList'
-import { CloudinaryContext } from 'cloudinary-react';
 import { createContext } from 'react';
-import { ThemeProvider } from 'styled-components';
 import ReactSwitch from 'react-switch';
-
 export const ThemeContext = createContext(null);
-
-
-
-
 
 
 function App() {
@@ -44,10 +34,7 @@ function App() {
   const [allMonitores, setAllMonitores] = useState([])
   const [allNotebooks, setAllNotebooks] = useState([])
   const [allPerfiericos, setAllPerfiericos] = useState([])
-  
-
   const [dataProducts, setDataProducts] = useState([])
-  const [busqueda, setBusqueda] = useState("")
   const[results, setResults] = useState([])
 
   //! cambiar el "id" por name

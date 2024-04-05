@@ -1,7 +1,7 @@
 
 import styled from 'styled-components'
 
-import styles from './index.module.css'
+import styles from './Index.module.css';
 import Sliders from './Slider.jsx/Sliders';
 
 
@@ -10,8 +10,8 @@ import Sliders from './Slider.jsx/Sliders';
 const Index = () => {
 
   const ImgContainer = styled.div`
-    width: 900px;
-    height: 900px;
+    width: 1200px;
+    height: 1200px;
     margin: 0 auto;
   `
     

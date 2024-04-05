@@ -1,7 +1,7 @@
-import {useRef, useEffect} from 'react';
-import styled from 'styled-components';
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import {useRef, useEffect} from 'react'
+import styled from 'styled-components'
+import { BsFillCaretLeftSquareFill } from "react-icons/bs"
+import { BsFillCaretRightSquareFill } from "react-icons/bs"
 
 
 
@@ -17,7 +17,7 @@ const Slideshow = ({children}) => {
         if(slideShow.current.children.length > 0) {
             const primerElemento = slideShow.current.children[0];
 
-            slideShow.current.style.transition = `700ms ease-out all`;
+            slideShow.current.style.transition = `500ms ease-out all`;
 
             const tamañoSlide = slideShow.current.children[0].offsetWidth;
 
@@ -52,7 +52,7 @@ const Slideshow = ({children}) => {
             slideShow.current.style.transform= `translateX(-${tamañoSlide}px)`
 
             setTimeout(()=>{
-                slideShow.current.style.transition='700ms ease-out all';
+                slideShow.current.style.transition='300ms ease-out all';
                 slideShow.current.style.transform = `translateX(0)`
             },5000)
 
@@ -89,8 +89,8 @@ const Slideshow = ({children}) => {
         </ContenedorSlideshow>
 
         <Controles>
-            <BotonL onClick={anterior}><BsFillArrowLeftCircleFill /></BotonL>
-            <BotonD onClick={siguiente}><BsFillArrowRightCircleFill /></BotonD>
+            <BotonL onClick={anterior}><BsFillCaretLeftSquareFill /></BotonL>
+            <BotonD onClick={siguiente}><BsFillCaretRightSquareFill /></BotonD>
         </Controles>
     </ContenedorPrincipal>
   )

@@ -1,0 +1,27 @@
+
+.containerAbout{
+    
+    width: 100vw;
+    padding: 0 5rem ;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.h1{
+    margin:2rem 0 ;
+}
+
+.h3{
+    margin: 1.5rem;
+    letter-spacing: 2.5px;
+    font-size: 1.5rem;
+}
+
+.Box{
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

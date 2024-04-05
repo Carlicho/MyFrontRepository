@@ -66,7 +66,7 @@ const ProductDetail = () => {
     display: flex;
   `;
 
-  const SumarCarrito = styled.div`
+  const SumarCarrito = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,16 +80,39 @@ const ProductDetail = () => {
     cursor: pointer;
   `;
 
+const Mercadopago = () => {
+  const url = 'http://localhost:3001/pagos';
+const data = {
+id: id,
+nombre: nombre,
+precio:  precio,
+cantidad: 1
+};
+
+axios.post(url, data)
+.then(response => {
+  const paymentLink = response.data.paymentLink;
+  console.log('Respuesta del servidor:', response.data);
+
+  setTimeout(() => {
+      window.open(response.data, '_blank');
+    }, 150);
+})
+.catch(error => {
+  console.log(error);});
+}
+
   return (
     <DetailContainer>
-      <ImgDetailContainer src={product.imagen} alt={product.nombre} />
+      <ImgDetailContainer src={product.url_imagen} alt={product.nombre} />
       <DetailDescriptionContainer>
         <DetailDescription>
-          {product.descripcion}
+          {product.nombre}
         </DetailDescription>
         <DetailPrice>${product.precio}</DetailPrice>
         <SumarCarritoBox>
-          <SumarCarrito>Sumar al carrito</SumarCarrito>
+          <SumarCarrito onClick={Mercadopago}>Comprar</SumarCarrito>
+          
           <TiShoppingCart size="3.24rem" />
         </SumarCarritoBox>
       </DetailDescriptionContainer>
