@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import UpLoadWidget from '../Claudinary/upLoadWidget'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -11,12 +10,10 @@ const Admin = () => {
 const [showForm, setShowForm] = useState(false);
 const url = 'http://localhost:3001/productos';
 const [productos, setProductos] = useState([]);
-const [id,setId]= useState('');
 const [nombre,setName]= useState('');
 const [descripcion,setDescripcion]= useState('');
 const [precio,setPrecio]= useState('');
-const [operation, setOperation]= useState('');
-const [tittle,setTittle]= useState('');
+
 
 const toggleForm = () => {
   setShowForm(!showForm);
@@ -210,7 +207,7 @@ return (
             <TableTd>{producto.descripcion}</TableTd>
 
             <TableButtons>
-              <UpLoadWidget />
+              
               <BtnAgregar>Agregar</BtnAgregar>
               <BtnEditar>Editar</BtnEditar>
               <BtnEliminar>Eliminar</BtnEliminar>
